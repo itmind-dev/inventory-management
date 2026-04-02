@@ -12,7 +12,7 @@ import {
 } from '@heroicons/react/24/outline';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/jobs';
+const API_URL = '/api/jobs';
 
 const JobsList = () => {
     const [jobs, setJobs] = useState([]);

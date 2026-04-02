@@ -12,7 +12,7 @@ import {
 } from '@heroicons/react/24/outline';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/suppliers';
+const API_URL = '/api/suppliers';
 
 const SuppliersList = () => {
     const [suppliers, setSuppliers] = useState([]);

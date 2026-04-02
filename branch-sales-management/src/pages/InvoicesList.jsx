@@ -13,7 +13,7 @@ import {
 } from '@heroicons/react/24/outline';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/invoices';
+const API_URL = '/api/invoices';
 
 const InvoicesList = () => {
     const [invoices, setInvoices] = useState([]);

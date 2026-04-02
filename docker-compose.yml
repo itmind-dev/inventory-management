@@ -1,0 +1,28 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: anakade_app
+    restart: unless-stopped
+    env_file:
+      - .env
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=dokploy-network
+      - traefik.http.services.anakade.loadbalancer.server.port=8080
+      - traefik.http.routers.anakade-web.rule=Host(`anakade.itmind.app`)
+      - traefik.http.routers.anakade-web.entrypoints=web
+      - traefik.http.routers.anakade-web.middlewares=redirect-to-https@file
+      - traefik.http.routers.anakade-web.service=anakade
+      - traefik.http.routers.anakade-websecure.rule=Host(`anakade.itmind.app`)
+      - traefik.http.routers.anakade-websecure.entrypoints=websecure
+      - traefik.http.routers.anakade-websecure.tls.certresolver=letsencrypt
+      - traefik.http.routers.anakade-websecure.service=anakade
+    networks:
+      - default
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true

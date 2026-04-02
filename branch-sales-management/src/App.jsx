@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useState, useEffect, createContext } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import MainLayout from './components/MainLayout';
 
 export const ThemeContext = createContext();
@@ -43,7 +43,7 @@ const LoadingScreen = () => (
 function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <HashRouter>
         <MainLayout>
         <Suspense fallback={<LoadingScreen />}>
           <Routes>
@@ -61,7 +61,7 @@ function App() {
           </Routes>
         </Suspense>
         </MainLayout>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }

@@ -11,7 +11,7 @@ import {
 } from '@heroicons/react/24/outline';
 import axios from 'axios';
 
-const API_URL = `http://${window.location.hostname}:8080/api/inventory`;
+const API_URL = '/api/inventory';
 
 const formatDate = (dateVal) => {
     if (!dateVal) return '—';
