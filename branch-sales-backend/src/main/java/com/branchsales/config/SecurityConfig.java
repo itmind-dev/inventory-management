@@ -19,7 +19,12 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .cors(cors -> cors.configurationSource(request -> {
                 CorsConfiguration config = new CorsConfiguration();
-                config.setAllowedOrigins(Collections.singletonList("http://localhost:5173"));
+                config.setAllowedOriginPatterns(java.util.Arrays.asList(
+                    "http://localhost:5173",
+                    "http://127.0.0.1:*",
+                    "http://51.210.14.125",
+                    "https://*.itmind.app"
+                ));
                 config.setAllowedMethods(java.util.Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                 config.setAllowedHeaders(Collections.singletonList("*"));
                 config.setAllowCredentials(true);
